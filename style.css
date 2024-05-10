@@ -1,0 +1,458 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --text-color: white;
+  --bg-url: url(./assets/bg-mobile.jpg);
+  --stroke-color: rgba(255, 255, 255, 0.5);
+  --surface-color: rgba(255, 255, 255, 0.05);
+  --surface-color-hover: rgba(0, 0, 0, 0.02);
+  --highlight-color: rgba(255, 255, 255, 0.2);
+  --switch: url(./assets/moon-stars.svg);
+}
+
+.light {
+  --text-color: black;
+  --bg-url: url(./assets/bg-mobile-light.jpg);
+  --stroke-color: rgba(0, 0, 0, 0.5);
+  --surface-color: rgba(0, 0, 0, 0.05);
+  --surface-color-hover: rgba(0, 0, 0, 0.02);
+  --highlight-color: rgba(0, 0, 0, 0.1);
+  --switch: url(./assets/sun.svg);
+}
+
+body {
+  /*background-image: url(./assets/bg-mobile.jpg);
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: cover;
+  */
+
+  /*atalho*/
+  background: var(--bg-url) no-repeat top center/cover;
+  height: 100vh;
+}
+
+body * {
+  font-family: "Inter", sans-serif;
+  color: var(--text-color);
+}
+
+#container1 {
+  width: 100%;
+  max-width: 588px;
+  margin: 56px auto 0px auto; /*cima direita baixo esquerda*/
+  padding: 0 24px;
+}
+
+#container2 {
+  width: 100%;
+  max-width: 588px;
+  margin: 56px auto 0px auto; /*cima direita baixo esquerda*/
+  padding: 0 24px;
+}
+
+/*profile*/
+
+#profile {
+  text-align: center;
+  padding: 24px;
+}
+
+#profile img {
+  width: 112px;
+}
+
+#profile p {
+  margin-top: 8px;
+  font-size: 16px; /*16  ja é padrao*/
+  font-weight: 500px;
+  line-height: 24px;
+}
+
+/*switch*/
+
+#switch {
+  position: relative;
+  width: 64px;
+
+  margin: 4px auto;
+}
+
+#switch button {
+  width: 32px;
+  height: 32px;
+  background: white var(--switch) no-repeat center;
+  border: 0;
+  border-radius: 50%;
+
+  position: absolute; /*libera propriedades*/
+  top: 50%;
+  left: 0;
+  z-index: 1;
+  transform: translateY(-50%);
+
+  animation: slide-back 0.2s;
+}
+
+.light #switch button {
+  animation: slide-in 0.2s forwards;
+}
+
+#switch button:hover {
+  outline: 8px solid var(--highlight-color);
+}
+
+#switch span {
+  display: block; /*libera propriedades*/
+  width: 64px;
+  height: 24px;
+  background: var(--surface-color);
+  border: 1px solid var(--stroke-color);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 9999px;
+}
+
+/* links*/
+
+ul {
+  list-style: none; /*retirar pontos da lista*/
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px 0;
+}
+
+ul li a {
+  display: flex; /*ocupa todo o bloco*/
+  align-items: center; /*alinha horizonte*/
+  justify-content: center; /*alinha vertical*/
+  padding: 16px 24px;
+  background: var(--surface-color);
+  border: 1px solid var(--stroke-color);
+  border-radius: 8px; /*arredondamento da borda*/
+
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px); /*borrar o botao*/
+
+  text-decoration: none; /*usado para colocar linhas no texto*/
+  font-weight: 500; /*"negrito"*/
+
+  transition: background 0.5s; /*transição do hover*/
+}
+
+ul li button {
+  display: flex; /*ocupa todo o bloco*/
+  align-items: center; /*alinha horizonte*/
+  justify-content: center; /*alinha vertical*/
+  padding: 16px 24px;
+  background: var(--surface-color);
+  border: 1px solid var(--stroke-color);
+  border-radius: 8px; /*arredondamento da borda*/
+
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px); /*borrar o botao*/
+
+  text-decoration: none; /*usado para colocar linhas no texto*/
+  font-weight: 500; /*"negrito"*/
+
+  transition: background 0.5s; /*transição do hover*/
+}
+
+/* pseudo selector, quando passa o mouse em cima*/
+ul li a:hover {
+  background: var(--surface-color-hover);
+  border: 1.5px solid var(--text-color);
+}
+
+ul li button:hover {
+  background: var(--surface-color-hover);
+  border: 1.5px solid var(--text-color);
+}
+
+/*social links*/
+
+#socialslinks {
+  display: flex;
+  justify-content: center;
+
+  padding: 24px 0;
+
+  font-size: 24px;
+}
+
+#socialslinks a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+
+  transition: background 0.2s;
+  border-radius: 50%;
+}
+
+#socialslinks a:hover {
+  background: var(--highlight-color);
+  padding: 16px;
+}
+
+footer {
+  padding: 24px;
+  text-align: center;
+  font-size: 14px;
+}
+
+@media (min-width: 700px) {
+  :root {
+    --bg-url: url(./assets/bg-desktop.jpg);
+  }
+
+  .light {
+    --bg-url: url(./assets/bg-desktop-light.jpg);
+  }
+}
+
+/*animation*/
+
+@keyframes slide-in {
+  from {
+    left: 0;
+  }
+  to {
+    left: 50%;
+  }
+}
+
+@keyframes slide-back {
+  from {
+    left: 50%;
+  }
+  to {
+    left: 0;
+  }
+}
+
+/* CSS FOTOS */
+
+#voltar {
+  display: flex;
+  justify-content: left;
+
+  padding: 24px 0px 0px 24px;
+
+  font-size: 32px;
+}
+
+#voltar a {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+
+  transition: background 0.2s;
+  border-radius: 50%;
+}
+
+#voltar a:hover {
+  background: var(--highlight-color);
+  padding: 4px;
+}
+
+#fotoFun {
+  position: a;
+  gap: 50px;
+  display: flex;
+  justify-content: center;
+  padding: 0 0 16px 0;
+}
+
+#fotoFun2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#fotoFun a {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  font-size: 24px;
+  transition: background 0.2s;
+  border-radius: 50%;
+  padding: 4px;
+}
+
+#fotoFun a:hover {
+  background: var(--highlight-color);
+  padding: 4px;
+}
+
+#fotos {
+  gap: 50px;
+  display: flex;
+  justify-content: center;
+}
+
+#fotoDan {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#fotoDan a {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  font-size: 24px;
+  transition: background 0.2s;
+  border-radius: 50%;
+  padding: 4px;
+}
+
+#fotoDan a:hover {
+  background: var(--highlight-color);
+  padding: 4px;
+}
+
+#fotoTeddy {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 0 24px 0;
+}
+
+#fotoTeddy a {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  font-size: 24px;
+  transition: background 0.2s;
+  border-radius: 50%;
+  padding: 4px;
+}
+
+#fotoTeddy a:hover {
+  background: var(--highlight-color);
+  padding: 4px;
+}
+
+#fotoZira {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#fotoZira a {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  font-size: 24px;
+  transition: background 0.2s;
+  border-radius: 50%;
+  padding: 4px;
+}
+
+#fotoZira a:hover {
+  background: var(--highlight-color);
+  padding: 4px;
+}
+
+#fotoSummerz {
+  gap: 50px;
+  display: flex;
+  justify-content: center;
+}
+
+#fotoSummerz2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#fotoSummerz a {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  font-size: 24px;
+  transition: background 0.2s;
+  border-radius: 50%;
+  padding: 4px;
+}
+
+#fotoSummerz a:hover {
+  background: var(--highlight-color);
+  padding: 4px;
+}
+
+/* #fotoTeddy {
+        text-align: center;
+}
+
+#fotoTeddy a {
+        font-size: 24px;
+}
+
+#fotoZira {
+        text-align: center;
+}
+
+#fotoZira a {
+        font-size: 24px;
+} */
+
+#cargo0 {
+  margin: 8px;
+  font-size: 12px;
+}
+
+#cargo1 {
+  margin: 8px;
+  font-size: 12px;
+}
+
+#cargo2 {
+  margin: 8px;
+  font-size: 12px;
+}
+
+#cargo3 {
+  margin: 8px;
+  font-size: 12px;
+}
+
+#cargo4 {
+  margin: 8px;
+  font-size: 12px;
+}
+
+#asas {
+  width: 100%;
+  padding: 0 24px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#asas img {
+  padding: 32px 0 0 0;
+  top: 50%;
+  position: absolute; /*libera propriedades*/
+  z-index: 1;
+}
